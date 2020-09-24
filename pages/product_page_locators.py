@@ -6,3 +6,4 @@ class ProductPageLocators():
     PRODUCT_IN_ADDING_MESSAGE = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div > strong') #плохой селектор
     MESSAGE_BASKET_TOTAL = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
+    PRODUCT_DESCRIPTION = (By.CSS_SELECTOR, "#product_description+p")
