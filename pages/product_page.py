@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .product_page_locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException  # в начале файла
 import math
+import time
 
 class ProductPage(BasePage):
     product_name = ''
@@ -16,7 +17,8 @@ class ProductPage(BasePage):
 
         basket = self.browser.find_element(*ProductPageLocators.BASKET)
         basket.click()
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
+        # time.sleep(10)
 
         self.should_be_message_adding()
         self.should_be_message_basket_total()
@@ -76,4 +78,11 @@ class ProductPage(BasePage):
         # Проверяем цену товара в сообщениии корзины
         assert self.product_price in basket_total_in_message, "No product price in the message"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_IN_ADDING_MESSAGE), \
+            "is_not_element_present: проверка на отсутствие"
+
+
+    def should_dissapear_of_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_IN_ADDING_MESSAGE), "is_disappeared:  проверка на отсутствие"
 
